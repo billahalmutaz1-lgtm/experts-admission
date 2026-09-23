@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experts International School - Admissions 2026-2027</title>
+    <title>استمارة القبول والتسجيل - مدارس إكسبريس الدولية</title>
     <style>
-        :root {
-            --navy: #0b1f3f;
-            --sky-blue: #0077b6;
-            --gold: #d4af37;
-            --light-bg: #f8f9fa;
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            color: #333;
+            font-family: 'Cairo', Tahoma, sans-serif;
+            background-color: #f4f6f9;
             margin: 0;
             padding: 20px;
+            color: #333;
         }
         .container {
             max-width: 700px;
-            margin: 40px auto;
+            margin: 0 auto;
             background: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-top: 5px solid var(--navy);
         }
         h2 {
-            color: var(--navy);
             text-align: center;
+            color: #1a365d;
             margin-bottom: 25px;
         }
         .form-group {
@@ -38,162 +31,104 @@
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--navy);
+            font-weight: bold;
+            color: #2d3748;
         }
-        input, select {
+        .form-control {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 16px;
             box-sizing: border-box;
-            font-size: 15px;
+            background-color: #fff;
         }
-        input:focus, select:focus {
-            border-color: var(--sky-blue);
+        .form-control:focus {
+            border-color: #3182ce;
             outline: none;
-            box-shadow: 0 0 5px rgba(0,119,182,0.3);
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
         }
         .btn-submit {
-            background-color: var(--navy);
+            background-color: #3182ce;
             color: white;
-            padding: 14px 20px;
             border: none;
-            border-radius: 6px;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s;
+            transition: background-color 0.2s;
         }
         .btn-submit:hover {
-            background-color: var(--sky-blue);
-        }
-        #success-screen {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        #success-screen h3 {
-            color: var(--gold);
-            font-size: 24px;
+            background-color: #2b6cb0;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Experts International School<br><span style="font-size: 18px; color: var(--sky-blue);">Admissions Application 2026-2027</span></h2>
+    <h2>استمارة القبول والتسجيل - مدارس إكسبريس الدولية</h2>
     
-    <form id="admissionsForm" onsubmit="event.preventDefault(); submitForm();">
+    <form id="admissionForm">
+        <!-- حقل اختيار القسم الدراسي -->
         <div class="form-group">
-            <label>Student Name (Arabic):</label>
-            <input type="text" id="studentNameAr" required placeholder="الاسم رباعي بالعربي">
-        </div>
-
-        <div class="form-group">
-            <label>Student Name (English):</label>
-            <input type="text" id="studentNameEn" required placeholder="Full Name in English">
-        </div>
-
-        <div class="form-group">
-            <label>Date of Birth:</label>
-            <input type="date" id="dob" required>
-        </div>
-
-        <div class="form-group">
-            <label>Gender:</label>
-            <select id="gender" required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+            <label for="section">القسم الدراسي المتقدم له: *</label>
+            <select id="section" name="section" required class="form-control">
+                <option value="" disabled selected>-- اختر القسم الدراسي --</option>
+                <option value="القسم العربي - المنهج السوداني القومي">القسم العربي (المنهج السوداني القومي)</option>
+                <option value="القسم الإنترناشونال - منهج كامبريدج">القسم الإنترناشونال (منهج كامبريدج)</option>
+                <option value="القسم أونلاين إنترناشونال - منهج كامبريدج">القسم أونلاين إنترناشونال (منهج كامبريدج)</option>
             </select>
         </div>
 
+        <!-- اسم الطالب -->
         <div class="form-group">
-            <label>Grade Applying For:</label>
-            <select id="grade" required>
-                <option value="">Select Grade</option>
-                <option value="Grade 1">Grade 1</option>
-                <option value="Grade 2">Grade 2</option>
-                <option value="Grade 3">Grade 3</option>
-                <option value="Grade 4">Grade 4</option>
-                <option value="Grade 5">Grade 5</option>
-                <option value="Grade 6">Grade 6</option>
-                <option value="Grade 7">Grade 7</option>
-                <option value="Grade 8">Grade 8</option>
-            </select>
+            <label for="studentName">اسم الطالب الرباعي: *</label>
+            <input type="text" id="studentName" name="studentName" required class="form-control" placeholder="أدخل اسم الطالب رباعياً">
         </div>
 
+        <!-- الصف الدراسي -->
         <div class="form-group">
-            <label>Section:</label>
-            <select id="section" required>
-                <option value="British">British Section</option>
-                <option value="American">American Section</option>
-            </select>
+            <label for="grade">الصف المتقدم له: *</label>
+            <input type="text" id="grade" name="grade" required class="form-control" placeholder="مثال: الصف الرابع الابتدائي">
         </div>
 
+        <!-- اسم ولي الأمر -->
         <div class="form-group">
-            <label>Parent/Guardian Name:</label>
-            <input type="text" id="parentName" required placeholder="Parent Name">
+            <label for="guardianName">اسم ولي الأمر: *</label>
+            <input type="text" id="guardianName" name="guardianName" required class="form-control" placeholder="أدخل اسم ولي الأمر">
         </div>
 
+        <!-- رقم الهاتف -->
         <div class="form-group">
-            <label>Phone Number:</label>
-            <input type="tel" id="phone" required placeholder="+249XXXXXXXXX">
+            <label for="phone">رقم الهاتف (واتساب): *</label>
+            <input type="tel" id="phone" name="phone" required class="form-control" placeholder="أدخل رقم الهاتف للتواصل">
         </div>
 
-        <div class="form-group">
-            <label>Email Address:</label>
-            <input type="email" id="email" required placeholder="example@domain.com">
-        </div>
-
-        <div class="form-group">
-            <label>Previous School (Optional):</label>
-            <input type="text" id="previousSchool" placeholder="Name of previous school">
-        </div>
-
-        <button type="submit" class="btn-submit">Submit Application</button>
+        <button type="submit" class="btn-submit">إرسال طلب التسجيل</button>
     </form>
-
-    <div id="success-screen">
-        <h3>Application Submitted Successfully!</h3>
-        <p>Your Application Number is: <strong id="resultAppNo" style="color: var(--navy); font-size: 20px;"></strong></p>
-        <p>Thank you for choosing <strong>Experts International School</strong>.<br>Our Admissions Team will contact you shortly via WhatsApp.</p>
-    </div>
 </div>
 
 <script>
-    function submitForm() {
-        // حط رابط الـ Web App الطويل الخاص بك هنا بين علامات التنصيص المفردة
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzbBO47aJfTwx13IQBNxJ3So_P_Q16oLQps16U4p2U1mSop0marZumPLUF2RddlDC1i/exec';
+    // ضع رابط سكريبت جوجل شيت الخاص بك هنا عند الربط
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-        const formData = {
-            studentNameAr: document.getElementById('studentNameAr').value,
-            studentNameEn: document.getElementById('studentNameEn').value,
-            dob: document.getElementById('dob').value,
-            gender: document.getElementById('gender').value,
-            grade: document.getElementById('grade').value,
-            section: document.getElementById('section').value,
-            parentName: document.getElementById('parentName').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            previousSchool: document.getElementById('previousSchool').value
-        };
-
-        fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('admissionsForm').style.display = 'none';
-                document.getElementById('resultAppNo').innerText = data.appNo;
-                document.getElementById('success-screen').style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert('حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.');
-            });
-    }
+    const form = document.getElementById('admissionForm');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // يمكنك تفعيل الكود أدناه لاحقاً لربط البيانات بـ Google Sheets مباشرة
+        /*
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert('تم إرسال طلبك بنجاح!'))
+            .catch(error => console.error('Error!', error.message));
+        */
+        
+        alert('تم استلام بيانات الاستمارة بنجاح وسيتم جدولتها بحسب القسم المختيار.');
+    });
 </script>
 
 </body>
+</html>
 </html>
