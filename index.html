@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استمارة القبول والتسجيل - مدارس إكسبريس الدولية | EIS Admission Form</title>
+    <style>
+        body {
+            font-family: 'Cairo', Tahoma, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .header-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-logo img {
+            max-width: 120px;
+            height: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #1a365d;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        .en-label {
+            font-weight: normal;
+            color: #718096;
+            font-size: 13px;
+            margin-right: 5px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        .form-control:focus {
+            border-color: #3182ce;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+        .btn-submit {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #2b6cb0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- شعار المدرسة -->
+    <div class="header-logo">
+        <img src="logo.png" alt="Experts International School Logo" onerror="this.style.display='none'">
+    </div>
+
+    <h2>استمارة القبول والتسجيل</h2>
+    <div class="subtitle">Experts International School - Admission Form</div>
+    
+    <form id="admissionForm">
+        <!-- القسم الدراسي -->
+        <div class="form-group">
+            <label for="section">
+                القسم الدراسي المتقدم له: * 
+                <span class="en-label">| Target Academic Section</span>
+            </label>
+            <select id="section" name="section" required class="form-control">
+                <option value="" disabled selected>-- اختر القسم / Select Section --</option>
+                <option value="القسم العربي - المنهج السوداني القومي">القسم العربي (المنهج السوداني القومي) - Arabic Section (Sudanese National)</option>
+                <option value="القسم الإنترناشونال - منهج كامبريدج">القسم الإنترناشونال (منهج كامبريدج - حضور) - International Section (Cambridge - In-person)</option>
+                <option value="القسم أونلاين إنترناشونال - منهج كامبريدج">القسم أونلاين إنترناشونال (منهج كامبريدج - عن بُعد) - Online International Section (Cambridge)</option>
+            </select>
+        </div>
+
+        <!-- اسم الطالب -->
+        <div class="form-group">
+            <label for="studentName">
+                اسم الطالب الرباعي: * 
+                <span class="en-label">| Student's Full Name</span>
+            </label>
+            <input type="text" id="studentName" name="studentName" required class="form-control" placeholder="أدخل اسم الطالب رباعياً / Full Name">
+        </div>
+
+        <!-- الصف الدراسي -->
+        <div class="form-group">
+            <label for="grade">
+                الصف المتقدم له: * 
+                <span class="en-label">| Target Grade</span>
+            </label>
+            <select id="grade" name="grade" required class="form-control">
+                <option value="" disabled selected>-- اختر الصف / Select Grade --</option>
+                <option value="Grade 1">الصف الأول (Grade 1)</option>
+                <option value="Grade 2">الصف الثاني (Grade 2)</option>
+                <option value="Grade 3">الصف الثالث (Grade 3)</option>
+                <option value="Grade 4">الصف الرابع (Grade 4)</option>
+                <option value="Grade 5">الصف الخامس (Grade 5)</option>
+                <option value="Grade 6">الصف السادس (Grade 6)</option>
+                <option value="Grade 7">الصف السابع (Grade 7)</option>
+                <option value="Grade 8">الصف الثامن (Grade 8)</option>
+                <option value="Grade 9">الصف التاسع (Grade 9)</option>
+                <option value="Grade 10">الصف العاشر (Grade 10)</option>
+                <option value="Grade 11">الصف الحادي عشر (Grade 11)</option>
+            </select>
+        </div>
+
+        <!-- اسم ولي الأمر -->
+        <div class="form-group">
+            <label for="guardianName">
+                اسم ولي الأمر: * 
+                <span class="en-label">| Guardian's Name</span>
+            </label>
+            <input type="text" id="guardianName" name="guardianName" required class="form-control" placeholder="أدخل اسم ولي الأمر / Guardian's Name">
+        </div>
+
+        <!-- رقم الهاتف -->
+        <div class="form-group">
+            <label for="phone">
+                رقم الهاتف (واتساب): * 
+                <span class="en-label">| Phone Number (WhatsApp)</span>
+            </label>
+            <input type="tel" id="phone" name="phone" required class="form-control" placeholder="أدخل رقم الهاتف / Phone Number">
+        </div>
+
+        <button type="submit" class="btn-submit">إرسال طلب التسجيل | Submit Application</button>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('admissionForm');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        alert('تم استلام بيانات الاستمارة بنجاح وسيتم معالجة طلبك قريباً.\nApplication submitted successfully!');
+    });
+</script>
+
+</body>
+</html>
