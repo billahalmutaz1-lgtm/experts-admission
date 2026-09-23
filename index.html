@@ -3,132 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استمارة القبول والتسجيل - مدارس إكسبريس الدولية | EIS Admission Form</title>
+    <title>Experts International School - Admission Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Cairo', Tahoma, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-            color: #333;
+        :root {
+            --primary-color: #1e3a8a;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
         }
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .header-logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .header-logo img {
-            max-width: 120px;
-            height: auto;
-        }
-        h2 {
-            text-align: center;
-            color: #1a365d;
-            margin-bottom: 5px;
-            font-size: 24px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #4a5568;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #2d3748;
-        }
-        .en-label {
-            font-weight: normal;
-            color: #718096;
-            font-size: 13px;
-            margin-right: 5px;
-        }
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fff;
-        }
-        .form-control:focus {
-            border-color: #3182ce;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-        }
-        .btn-submit {
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s;
-        }
-        .btn-submit:hover {
-            background-color: #2b6cb0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; }
+        .container { max-width: 700px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; }
+        .lang-switch { position: absolute; top: 20px; left: 20px; background: var(--primary-color); color: #fff; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header img { width: 90px; height: 90px; object-fit: contain; margin-bottom: 10px; }
+        .header h1 { font-size: 24px; color: var(--primary-color); margin-bottom: 5px; }
+        .header p { color: #64748b; font-size: 14px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(30,58,138,0.1); }
+        button[type="submit"] { width: 100%; background: var(--primary-color); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+        button[type="submit"]:hover { background: #1e40af; }
+        .success-msg { display: none; background: #dcfce7; color: #166534; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- شعار المدرسة -->
-    <div class="header-logo">
-        <img src="logo.png" alt="Experts International School Logo" onerror="this.style.display='none'">
+    <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">English</button>
+    
+    <div class="header">
+        <img src="logo.png" alt="EIS Logo" onerror="this.style.display='none'">
+        <h1 id="mainTitle">استمارة التقديم والقبول الإلكتروني</h1>
+        <p id="subTitle">مدارس الخبراء العالمية - Experts International School</p>
     </div>
 
-    <h2>استمارة القبول والتسجيل</h2>
-    <div class="subtitle">Experts International School - Admission Form</div>
-    
-    <form id="admissionForm">
-        <!-- القسم الدراسي -->
+    <form id="admissionForm" onsubmit="submitForm(event)">
         <div class="form-group">
-            <label for="section">
-                القسم الدراسي المتقدم له: * 
-                <span class="en-label">| Target Academic Section</span>
-            </label>
-            <select id="section" name="section" required class="form-control">
-                <option value="" disabled selected>-- اختر القسم / Select Section --</option>
-                <option value="القسم العربي - المنهج السوداني القومي">القسم العربي (المنهج السوداني القومي) - Arabic Section (Sudanese National)</option>
-                <option value="القسم الإنترناشونال - منهج كامبريدج">القسم الإنترناشونال (منهج كامبريدج - حضور) - International Section (Cambridge - In-person)</option>
-                <option value="القسم أونلاين إنترناشونال - منهج كامبريدج">القسم أونلاين إنترناشونال (منهج كامبريدج - عن بُعد) - Online International Section (Cambridge)</option>
+            <label id="lblStudent">اسم الطالب الرباعي:</label>
+            <input type="text" id="studentName" required placeholder="أدخل اسم الطالب كاملاً">
+        </div>
+
+        <div class="form-group">
+            <label id="lblSection">القسم الدراسي:</label>
+            <select id="section" required>
+                <option value="" disabled selected>-- اختر القسم الدراسي --</option>
+                <option value="القسم العربي (السوداني)">القسم العربي (السوداني)</option>
+                <option value="القسم الدولي (حضوري - كامبريدج)">القسم الدولي (حضوري - كامبريدج)</option>
+                <option value="القسم الدولي (أونلاين - كامبريدج)">القسم الدولي (أونلاين - كامبريدج)</option>
             </select>
         </div>
 
-        <!-- اسم الطالب -->
         <div class="form-group">
-            <label for="studentName">
-                اسم الطالب الرباعي: * 
-                <span class="en-label">| Student's Full Name</span>
-            </label>
-            <input type="text" id="studentName" name="studentName" required class="form-control" placeholder="أدخل اسم الطالب رباعياً / Full Name">
-        </div>
-
-        <!-- الصف الدراسي -->
-        <div class="form-group">
-            <label for="grade">
-                الصف المتقدم له: * 
-                <span class="en-label">| Target Grade</span>
-            </label>
-            <select id="grade" name="grade" required class="form-control">
-                <option value="" disabled selected>-- اختر الصف / Select Grade --</option>
+            <label id="lblGrade">الصف المستهدف:</label>
+            <select id="grade" required>
+                <option value="" disabled selected>-- اختر الصف --</option>
                 <option value="Grade 1">الصف الأول (Grade 1)</option>
                 <option value="Grade 2">الصف الثاني (Grade 2)</option>
                 <option value="Grade 3">الصف الثالث (Grade 3)</option>
@@ -136,41 +67,106 @@
                 <option value="Grade 5">الصف الخامس (Grade 5)</option>
                 <option value="Grade 6">الصف السادس (Grade 6)</option>
                 <option value="Grade 7">الصف السابع (Grade 7)</option>
-                <option value="Grade 8">الصف الثامن (Grade 8)</option>
+                <option value="Grade 8">الصف الثمن (Grade 8)</option>
                 <option value="Grade 9">الصف التاسع (Grade 9)</option>
                 <option value="Grade 10">الصف العاشر (Grade 10)</option>
                 <option value="Grade 11">الصف الحادي عشر (Grade 11)</option>
             </select>
         </div>
 
-        <!-- اسم ولي الأمر -->
         <div class="form-group">
-            <label for="guardianName">
-                اسم ولي الأمر: * 
-                <span class="en-label">| Guardian's Name</span>
-            </label>
-            <input type="text" id="guardianName" name="guardianName" required class="form-control" placeholder="أدخل اسم ولي الأمر / Guardian's Name">
+            <label id="lblParent">اسم ولي الأمر:</label>
+            <input type="text" id="parentName" required placeholder="أدخل اسم ولي الأمر">
         </div>
 
-        <!-- رقم الهاتف -->
         <div class="form-group">
-            <label for="phone">
-                رقم الهاتف (واتساب): * 
-                <span class="en-label">| Phone Number (WhatsApp)</span>
-            </label>
-            <input type="tel" id="phone" name="phone" required class="form-control" placeholder="أدخل رقم الهاتف / Phone Number">
+            <label id="lblPhone">رقم الهاتف (واتساب):</label>
+            <input type="tel" id="phone" required placeholder="05xxxxxxxx / 09xxxxxxxx">
         </div>
 
-        <button type="submit" class="btn-submit">إرسال طلب التسجيل | Submit Application</button>
+        <div class="form-group">
+            <label id="lblNotes">ملاحظات إضافية (اختياري):</label>
+            <textarea id="notes" rows="3" placeholder="أي تفاصيل أو استفسارات أخرى..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">إرسال طلب التسجيل</button>
     </form>
+
+    <div id="successMessage" class="success-msg">تم إرسال طلبك بنجاح! سنتواصل معك قريباً.</div>
 </div>
 
 <script>
-    const form = document.getElementById('admissionForm');
-    form.addEventListener('submit', e => {
+    // رابط جوجل شيت الخاص بك مثبت هنا تلقائياً
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDJKjKBnOZzeGZ6h8HWxk1_6j_pd2UZAN7j-vRYXPjD3e9o_NNCD6uLeVf33dsUnK-/exec";
+
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        const html = document.documentElement;
+        const btn = document.getElementById('langBtn');
+        
+        if(currentLang === 'en') {
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
+            btn.innerText = 'العربية';
+            document.getElementById('mainTitle').innerText = 'Online Admission Portal';
+            document.getElementById('subTitle').innerText = 'Experts International School';
+            document.getElementById('lblStudent').innerText = 'Full Student Name:';
+            document.getElementById('lblSection').innerText = 'Academic Section:';
+            document.getElementById('lblGrade').innerText = 'Target Grade:';
+            document.getElementById('lblParent').innerText = "Parent's Name:";
+            document.getElementById('lblPhone').innerText = 'Phone Number (WhatsApp):';
+            document.getElementById('lblNotes').innerText = 'Additional Notes (Optional):';
+            document.getElementById('submitBtn').innerText = 'Submit Application';
+            document.getElementById('successMessage').innerText = 'Application submitted successfully! We will contact you soon.';
+        } else {
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'ar');
+            btn.innerText = 'English';
+            document.getElementById('mainTitle').innerText = 'استمارة التقديم والقبول الإلكتروني';
+            document.getElementById('subTitle').innerText = 'مدارس الخبراء العالمية - Experts International School';
+            document.getElementById('lblStudent').innerText = 'اسم الطالب الرباعي:';
+            document.getElementById('lblSection').innerText = 'القسم الدراسي:';
+            document.getElementById('lblGrade').innerText = 'الصف المستهدف:';
+            document.getElementById('lblParent').innerText = 'اسم ولي الأمر:';
+            document.getElementById('lblPhone').innerText = 'رقم الهاتف (واتساب):';
+            document.getElementById('lblNotes').innerText = 'ملاحظات إضافية (اختياري):';
+            document.getElementById('submitBtn').innerText = 'إرسال طلب التسجيل';
+            document.getElementById('successMessage').innerText = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
+        }
+    }
+
+    function submitForm(e) {
         e.preventDefault();
-        alert('تم استلام بيانات الاستمارة بنجاح وسيتم معالجة طلبك قريباً.\nApplication submitted successfully!');
-    });
+        
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = currentLang === 'ar' ? 'جاري الإرسال...' : 'Submitting...';
+
+        const data = {
+            studentName: document.getElementById('studentName').value,
+            section: document.getElementById('section').value,
+            grade: document.getElementById('grade').value,
+            parentName: document.getElementById('parentName').value,
+            phone: document.getElementById('phone').value,
+            notes: document.getElementById('notes').value
+        };
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(() => {
+            document.getElementById('admissionForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }).catch(() => {
+            alert(currentLang === 'ar' ? 'حدث خطأ، يرجى المحاولة مرة أخرى.' : 'An error occurred, please try again.');
+            btn.disabled = false;
+            btn.innerText = currentLang === 'ar' ? 'إرسال طلب التسجيل' : 'Submit Application';
+        });
+    }
 </script>
 
 </body>
